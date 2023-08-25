@@ -3,7 +3,7 @@ class ProductManager{
         this.products = []
     };
     getProducts(){
-        console.log(this.products);
+        return(this.products);
     }
 
     addProduct (title,description,price,thumbnail,code,stock){
@@ -45,7 +45,7 @@ class ProductManager{
         if(!prodId){
             console.log("Not Found");
         }else{
-            console.log(prodId);
+            return(prodId);
         }
 
     };
@@ -56,8 +56,8 @@ console.log(manager);
 manager.addProduct("top", "top deportivo",4000, "no  posee", "779001",50);
 manager.addProduct("calza","calza deportiva", 8000, "no posee", "779002", 50);
 manager.addProduct("short","short deportivo", 6000, "no posee", "779005", 50);
-manager.addProduct("calza corta","calza deportiva", 5000, "no posee", "779003", 50);
+manager.addProduct("calza corta","calza deportiva",5000, "no posee", "779003", 50);
 manager.getProducts();
-manager.getProductsById(3);
+manager.getProductsById(5);
 
 
