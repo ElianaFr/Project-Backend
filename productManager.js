@@ -128,6 +128,22 @@ class ProductManager{
             throw error;
         };
     };
+    async updateProduct(id,product){
+        try {
+            if(this.fileExist()){
+                // lee el archivo
+                const content = await fs.promises.readFile(this.filePath,"utf8");
+                // paso de string a Json
+                const contentJson = JSON.parse(content);
+                const prodUpdate = contentJson.find(e=>e.id === id);
+                
+
+            } 
+        }catch (error) {
+            console.log(error.message);
+            throw error;
+        }
+    }
 };
 
 const income = async()=>{
@@ -142,7 +158,7 @@ const income = async()=>{
         
         // const productId = await manager.getProductById(2);
         
-        const productDeleted= await manager.deleteProduct(0);
+        // const productDeleted= await manager.deleteProduct(0);
         
         // const productLoaded = await manager.getProducts();
         // console.log(productLoaded);
