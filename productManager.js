@@ -104,17 +104,14 @@ class ProductManager{
                 const content = await fs.promises.readFile(this.filePath,"utf8");
                 // paso de string a Json
                 const contentJson = JSON.parse(content);
-
+                // busca los objetos que cumple con la condicion
                 const listProd = contentJson.filter(e=>e.id !== id);
-
                 // sobreescribir el archivo con el nuevo producto
                 await fs.promises.writeFile(this.filePath,JSON.stringify(listProd,null,"\t"));
                 console.log("Producto borrado");
-                
             }else{
                 console.log("Ingrese un ID valido");
             }
-
         }catch (error) {
             console.log(error.message);
             throw error;
@@ -127,9 +124,16 @@ class ProductManager{
                 const content = await fs.promises.readFile(this.filePath,"utf8");
                 // paso de string a Json
                 const contentJson = JSON.parse(content);
-                const prodUpdate = contentJson.find(e=>e.id === id);
-                
-
+                const prodIndex= contentJson.findIndex(e=>e.id === id);
+                if(prodIndex === -1){
+                    console.log ("Producto no encontrado")
+                }else {
+                // actualiza la informacion del producto que se ingreso
+                    contentJson[prodIndex]={ ...contentJson[prodIndex], ...product};
+                    
+                };
+                // se actualiza el archivo
+                await fs.promises.writeFile(this.filePath,JSON.stringify(contentJson,null,"\t"));
             } 
         }catch (error) {
             console.log(error.message);
@@ -146,13 +150,18 @@ const income = async()=>{
         // await manager.addProduct({title:"short deportivo",description:"short deportivo mujer",price:6000, thumbnail:"No posee",code:"77902",stock:50});
         // await manager.addProduct({title:"camiseta deportiva",description:"camiseta mujer",price:4000, thumbnail:"No posee",code:"77903",stock:50});
         
+        // const productLoaded = await manager.getProducts();
+        // console.log(productLoaded);
+    
+
         // const productId = await manager.getProductById(0);
         // console.log(productId);
         
         // const productDeleted= await manager.deleteProduct(0);
         
-        const productLoaded = await manager.getProducts();
-        console.log(productLoaded);
+        await manager.updateProduct(0,{title:"calza",price:5000});
+        const updateProd = await manager.getProducts();
+        console.log("update",updateProd);
         
     
     } catch (error) {

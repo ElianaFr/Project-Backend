@@ -1,3 +1,29 @@
 [
-	
+	{
+		"title": "calza",
+		"description": "Calza deportiva mujer",
+		"price": 5000,
+		"thumbnail": "No posee",
+		"code": "77901",
+		"stock": 50,
+		"id": 0
+	},
+	{
+		"title": "short deportivo",
+		"description": "short deportivo mujer",
+		"price": 6000,
+		"thumbnail": "No posee",
+		"code": "77902",
+		"stock": 50,
+		"id": 1
+	},
+	{
+		"title": "camiseta deportiva",
+		"description": "camiseta mujer",
+		"price": 4000,
+		"thumbnail": "No posee",
+		"code": "77903",
+		"stock": 50,
+		"id": 2
+	}
 ]
